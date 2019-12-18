@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../queue_and_stack')
+# sys.path.append('../queue_and_stack')
 from dll_queue import Queue
 from dll_stack import Stack
 
@@ -12,7 +12,33 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+      new_node = BinarySearchTree(value)
+
+      def helper(node, new_node):
+        if new_node.value >= node.value:
+          if node.right == None:
+            node.right = new_node
+          else:
+            helper(node.right, new_node)
+        elif new_node.value <= node.value:
+          if node.left == None:
+            node.left = new_node
+          else:
+            helper(node.left, new_node)
+
+      if value <= self.value:
+        if self.left == None:
+          self.left = new_node
+        else:
+          helper(self.left, new_node)
+
+      elif value >= self.value:
+        if self.right == None:
+          self.right = new_node
+        else:
+          helper(self.right, new_node)
+
+        
 
     # Return True if the tree contains the value
     # False if it does not
@@ -55,3 +81,10 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+bst = BinarySearchTree(5)
+bst.insert(2)
+bst.insert(3)
+bst.insert(7)
+bst.insert(6)
+print(bst.right.left.value)
