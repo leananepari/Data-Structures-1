@@ -93,6 +93,7 @@ class BinarySearchTree:
       cb(self.value)
 
       def helper(node):
+        cb(node.value)
         if node.left != None:
           cb(node.left.value)
           helper(node.left)
