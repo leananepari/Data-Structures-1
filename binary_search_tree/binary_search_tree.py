@@ -68,7 +68,22 @@ class BinarySearchTree:
 
     # Return the maximum value found in the tree
     def get_max(self):
-        pass
+      max = self.value
+
+      def helper(node):
+        nonlocal max
+        if node.value > max:
+          max = node.value
+        if node.right == None:
+          return
+       
+        helper(node.right)
+      
+      if self.right == None:
+        return max
+      else:
+        helper(self.right)
+      return max
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
