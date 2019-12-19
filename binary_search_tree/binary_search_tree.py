@@ -112,7 +112,12 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
+        if node == None:
+          return 
+        self.in_order_print(node.left)
+        print(node.value)
+        self.in_order_print(node.right)
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -135,7 +140,7 @@ class BinarySearchTree:
     def post_order_dft(self, node):
         pass
 
-bst = BinarySearchTree(5)
+bst = BinarySearchTree(1)
 # bst.insert(2)
 # bst.insert(3)
 # bst.insert(7)
@@ -143,20 +148,30 @@ bst = BinarySearchTree(5)
 # print(bst.right.left.value)
 # print(bst.contains(6))
 
-arr = []
-cb = lambda x: arr.append(x)
+# arr = []
+# cb = lambda x: arr.append(x)
 
-v1 = random.randint(1, 101)
-v2 = random.randint(1, 101)
-v3 = random.randint(1, 101)
-v4 = random.randint(1, 101)
-v5 = random.randint(1, 101)
+# v1 = random.randint(1, 101)
+# v2 = random.randint(1, 101)
+# v3 = random.randint(1, 101)
+# v4 = random.randint(1, 101)
+# v5 = random.randint(1, 101)
 
-bst.insert(v1)
-bst.insert(v2)
-bst.insert(v3)
-bst.insert(v4)
-bst.insert(v5)
+# bst.insert(v1)
+# bst.insert(v2)
+# bst.insert(v3)
+# bst.insert(v4)
+# bst.insert(v5)
 
-bst.for_each(cb)
+# bst.for_each(cb)
 # print(arr)
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
+# print('HEREEEE', bst.in_order_print(bst.left))
+bst.in_order_print(bst)
+# print(bst.right.left.right.value)
