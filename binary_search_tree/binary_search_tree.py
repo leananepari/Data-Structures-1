@@ -1,4 +1,5 @@
 import sys
+import random
 # sys.path.append('../queue_and_stack')
 from dll_queue import Queue
 from dll_stack import Stack
@@ -88,7 +89,22 @@ class BinarySearchTree:
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+
+      cb(self.value)
+
+      def helper(node):
+        if node.left != None:
+          cb(node.left.value)
+          helper(node.left)
+        if node.right != None:
+          cb(node.right.value)
+          helper(node.right)
+      
+      if self.left != None:
+        helper(self.left)
+      if self.right != None:
+        helper(self.right)
+
 
     # DAY 2 Project -----------------------
 
@@ -119,9 +135,27 @@ class BinarySearchTree:
         pass
 
 bst = BinarySearchTree(5)
-bst.insert(2)
-bst.insert(3)
-bst.insert(7)
-bst.insert(6)
-print(bst.right.left.value)
-print(bst.contains(6))
+# bst.insert(2)
+# bst.insert(3)
+# bst.insert(7)
+# bst.insert(6)
+# print(bst.right.left.value)
+# print(bst.contains(6))
+
+arr = []
+cb = lambda x: arr.append(x)
+
+v1 = random.randint(1, 101)
+v2 = random.randint(1, 101)
+v3 = random.randint(1, 101)
+v4 = random.randint(1, 101)
+v5 = random.randint(1, 101)
+
+bst.insert(v1)
+bst.insert(v2)
+bst.insert(v3)
+bst.insert(v4)
+bst.insert(v5)
+
+bst.for_each(cb)
+# print(arr)
